@@ -1,0 +1,124 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                   PADDLEOCR V5 MIGRATION PLAN                                ║
+║              Nâng Cấp Khả Năng Scan Tiếng Việt Lên 90-95%                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📅 Ngày tạo: 2025-12-08
+🎯 Mục tiêu: Nâng cấp từ DocTR sang PaddleOCR v5 để cải thiện accuracy và performance
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 GIAI ĐOẠN 1: UPGRADE CORE (1-2 NGÀY)
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Mục tiêu:
+  - Upgrade lên paddleocr>=3.3.0
+  - Test PP-OCRv5 với Vietnamese samples
+  - So sánh accuracy với DocTR hiện tại
+
+□ Tasks:
+  [1] Backup current configuration và dependencies
+  [2] Upgrade paddleocr package: pip install "paddleocr>=3.3.0"
+  [3] Update config.py với PP-OCRv5 optimizations:
+      - use_textline_orientation: True
+      - use_doc_orientation_classify: True
+      - use_doc_unwarping: True
+  [4] Tạo test script để so sánh DocTR vs PaddleOCR v5
+  [5] Test với 5-10 Vietnamese administrative documents
+  [6] Document accuracy improvement
+
+📊 Expected Results:
+  - Accuracy: 85-90% → 92-95% (+5-7%)
+  - Setup time: ~2-4 hours
+  - Testing time: ~4-6 hours
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 GIAI ĐOẠN 2: ENHANCED PIPELINE (2-3 NGÀY)
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Mục tiêu:
+  - Implement modern PaddleOCR v5 API
+  - Cải thiện text extraction và formatting
+
+□ Tasks:
+  [1] Implement new predict() API thay thế old API
+  [2] Tích hợp text orientation detection
+  [3] Thêm document unwarping cho ảnh méo
+  [4] Implement visualization với save_to_img()
+  [5] Test với complex Vietnamese administrative docs
+  [6] Validate line breaking và formatting quality
+
+📊 Expected Results:
+  - Better text orientation handling
+  - Improved line breaking
+  - Visual debugging capabilities
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 GIAI ĐOẠN 3: ADVANCED FEATURES (1 TUẦN)
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Mục tiêu:
+  - Optimize performance
+  - Thêm advanced features cho production
+
+□ Tasks:
+  [1] Evaluate PaddleOCR-VL cho complex documents (tables, forms)
+  [2] Implement ONNX export cho faster inference (2-3x speedup)
+  [3] Setup multi-process batch folder scanning
+  [4] Fine-tune Vietnamese post-processing rules
+  [5] Integration testing với existing pipeline
+  [6] Performance benchmarking
+
+📊 Expected Results:
+  - 2-3x faster inference với ONNX
+  - Better handling of tables/forms
+  - Efficient batch processing
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 GIAI ĐOẠN 4: VALIDATION & DEPLOYMENT (2-3 NGÀY)
+═══════════════════════════════════════════════════════════════════════════════
+
+✓ Mục tiêu:
+  - Validate toàn bộ system
+  - Deploy lên production
+
+□ Tasks:
+  [1] Run full accuracy benchmark trên test set
+  [2] Speed comparison: DocTR vs PaddleOCR v5
+  [3] User acceptance testing
+  [4] Update documentation và README
+  [5] Production deployment
+  [6] Monitoring và final tweaks
+
+📊 Expected Results:
+  - Final accuracy: 92-95%
+  - 50-100% faster processing
+  - Production-ready system
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📈 TỔNG QUAN KỲ VỌNG
+═══════════════════════════════════════════════════════════════════════════════
+
+╔═══════════════════╦═══════════════╦═══════════════════╦═══════════════╗
+║ Metric            ║ Hiện tại      ║ Sau nâng cấp      ║ Cải thiện     ║
+╠═══════════════════╬═══════════════╬═══════════════════╬═══════════════╣
+║ Accuracy          ║ ~85-90%       ║ 92-95%            ║ +5-7%         ║
+║ Speed             ║ Baseline      ║ 1.5-2x (ONNX)     ║ +50-100%      ║
+║ Complex docs      ║ Moderate      ║ Excellent         ║ ++++          ║
+║ Multilingual      ║ Limited       ║ 109 languages     ║ ++++          ║
+╚═══════════════════╩═══════════════╩═══════════════════╩═══════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🔗 REFERENCES
+═══════════════════════════════════════════════════════════════════════════════
+
+[1] PaddleOCR GitHub: https://github.com/PaddlePaddle/PaddleOCR
+[2] PaddleOCR-VL Model: https://huggingface.co/PaddlePaddle/PaddleOCR-VL
+[3] Sample Implementation: https://github.com/onetapdevai/ocr_screen
+
+═══════════════════════════════════════════════════════════════════════════════
